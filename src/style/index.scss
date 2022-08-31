@@ -1,0 +1,20 @@
+/* Vendor style */
+@import "~bootstrap/scss/bootstrap";
+
+// @import "components/all";
+.weather-app {
+    max-width: 1440px;
+    width: 100%;
+    margin: 20px auto;
+    .weather-info {
+        &-card {
+            background-color: rgb(255, 255, 255);
+            box-shadow: rgb(0 0 0 / 10%) 1px 1px 3px;
+            border-radius: 15px;
+            padding: 1.5rem 2rem;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+    }
+}

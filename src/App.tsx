@@ -1,24 +1,23 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { useCallback, useState } from 'react';
+import './style/index.scss';
+import Search from './components/Search';
+import { CountriesData } from './types/types';
+import WeatherInformation from './components/WeatherInformation';
 
-function App() {
+const App = () => {
+  const [selectedCountry, setSelectedCountry] = useState<CountriesData | null>(null)
+
+  const handleSelectCountry = useCallback((country: CountriesData) => {
+    setSelectedCountry(country)
+  }, [])
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="weather-app">
+      <h1>Weather App</h1>
+      <Search handleSelectCountry={handleSelectCountry} />
+      <div className="weather-app-info" style={{ position: 'relative' }}>
+        {selectedCountry && <WeatherInformation selectedCountry={selectedCountry} />}
+      </div>
     </div>
   );
 }
